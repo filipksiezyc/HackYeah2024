@@ -36,3 +36,13 @@ kotlin {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+springBoot {
+    mainClass.set("com.example.mocksmartbandservice.MockSmartBandServiceApplication")
+}
+
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    manifest {
+        attributes("Start-Class" to "com.example.mocksmartbandservice.MockSmartBandServiceApplication")
+    }
+}
